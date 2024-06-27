@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:28:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 04:43:05 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/06/27 05:06:19 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,17 @@ int	check_sort(t_list *a)
 
 void	sortin_three(t_list **a)
 {
-	t_list	*tmp;
 	while (check_sort(*a) == 0)
 	{
-		/*printf("%i\n", check_sort(a));
-		tmp = a;
-		while (tmp)
-		{
-			printf("%i - %i\n", tmp->content.element, tmp->content.index);
-			tmp = tmp -> next;
-		}*/
-		if (ft_lstlast(*a)->content.index < (*a)->content.index)
+		if ((*a)->content.index == 1 && (*a)->next->content.index == 3)
 			rra(a);
-		else
+		else if ((*a)->content.index == 2 && (*a)->next->content.index == 1)
+			sa(a);
+		else if ((*a)->content.index == 2 && (*a)->next->content.index == 3)
+			rra(a);
+		else if ((*a)->content.index == 3 && (*a)->next->content.index == 1)
+			ra(a);
+		else if ((*a)->content.index == 3 && (*a)->next->content.index == 2)
 			sa(a);
 	}
 	return ;
@@ -62,7 +60,6 @@ void	sortin_five(t_list **a)
 
 	b = NULL;
 	mediane = 1 + (ft_lstsize(*a) / 2);
-	printf("%i\n", mediane);
 	while (ft_lstsize(b) < 2)
 	{
 		if ((*a)->content.index > mediane)
@@ -73,12 +70,6 @@ void	sortin_five(t_list **a)
 			rra(a);
 	}
 	sortin_three(a);
-	tmp = (*a);
-	while (tmp)
-	{
-		printf("%i - %i\n", tmp->content.element, tmp->content.index);
-		tmp = tmp -> next;
-	}
 	while (b)
 	{
 		if (check_sort(b) == 1)
