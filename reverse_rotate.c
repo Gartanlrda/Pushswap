@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:10 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/24 18:41:21 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/06/27 04:27:51 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 void	rra(t_list **a)
 {
-	/*t_psnode	temp;
-
-	temp = (*a)->content;
-	(*a)->content = ft_lstlast(*a)->content;
-	(*a)->next = temp;*/
 	t_list		*temp;
-	t_psnode	temp2;
+	t_list		*temp2;
 
-	temp2 = ft_lstlast(*a)->content;
-	temp = ft_lstnew(temp2);
+	temp2 = (*a);
+	temp = ft_lstlast(*a);
+	while (temp2->next != temp)
+		temp2 = temp2->next;
+	temp2->next = NULL;
 	ft_lstadd_front(a, temp);
 	printf("%s\n", "rra");
 }
 
 void	rrb(t_list **b)
 {
-	t_psnode	temp;
+	t_list		*temp;
+	t_list		*temp2;
 
-	temp = (*b)->content;
-	(*b)->content = ft_lstlast(*b)->content;
-	ft_lstlast(*b)->content = temp;
+	temp2 = (*b);
+	temp = ft_lstlast(*b);
+	while (temp2->next != temp)
+		temp2 = temp2->next;
+	temp2->next = NULL;
+	ft_lstadd_front(b, temp);
 	printf("%s\n", "rrb");
 }
 

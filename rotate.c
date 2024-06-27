@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:13:49 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/24 15:28:35 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/06/27 04:28:08 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 void	ra(t_list **a)
 {
-	t_psnode	temp;
+	t_list	*temp;
 
-	temp = ft_lstlast(*a)->content;
-	ft_lstlast(*a)->content = (*a)->content;
-	(*a)->content = temp;
+	temp = (*a);
+	(*a) = (*a)->next;
+	temp->next = NULL;
+	ft_lstadd_back(a, temp);
 	printf("%s\n", "ra");
 }
 
 void	rb(t_list **b)
 {
-	t_psnode	temp;
+	t_list	*temp;
 
-	temp = ft_lstlast(*b)->content;
-	ft_lstlast(*b)->content = (*b)->content;
-	(*b)->content = temp;
+	temp = (*b);
+	(*b) = (*b)->next;
+	temp->next = NULL;
+	ft_lstadd_back(b, temp);
 	printf("%s\n", "rb");
 }
 

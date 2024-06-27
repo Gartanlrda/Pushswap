@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/24 18:49:20 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/06/27 04:43:01 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ static void	free_tab(char **tab)
 int	main(int argc, char **argv)
 {
 	t_list	*a;
+	//t_list	*b;
 	t_list	*tmp;
+	//t_list	*tmp2;
 	char	**pre_sort;
 	int		i;
 
@@ -106,16 +108,25 @@ int	main(int argc, char **argv)
 		if (valid_lst(a) == 1)
 		{
 			index_maker(a);
-			sortin_three(a);
+			sortin_five(&a);
 			tmp = a;
+			//tmp2 = b;
 			while (tmp)
 			{
+				printf("%s\n", "Liste a:");
 				printf("%i - %i\n", tmp->content.element, tmp->content.index);
 				tmp = tmp -> next;
 			}
+			/*while (tmp2)
+			{
+				printf("%s\n", "Liste b:");
+				printf("%i - %i\n", tmp2->content.element, tmp2->content.index);
+				tmp2 = tmp2 -> next;
+			}*/
 		}
 		else
 			write(2, "Error\n", 6);
 		free_lst(a);
+		//free_lst(b);
 	}
 }
