@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap_utils2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 02:50:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/19 08:04:31 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/02 20:54:47 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	isspace(char c)
+static int	is_space(char c)
 {
 	if (c == ' ' || (c >= 9 && c <= 13))
 		return (1);
@@ -35,11 +35,11 @@ int	is_valid(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (isspace(s[i]) == 1 || is_num(s[i]) == 1)
+		if (is_space(s[i]) == 1 || is_num(s[i]) == 1)
 		{
 			if (s[i] == '-')
 			{
-				if (isspace(s[i - 1]) || i == 0)
+				if (is_space(s[i - 1]) || i == 0)
 					i++;
 				else
 					return (0);
