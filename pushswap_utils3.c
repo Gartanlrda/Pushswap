@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:28:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 05:06:19 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/06/27 05:57:14 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,29 @@ void	sortin_three(t_list **a)
 	return ;
 }
 
+static void	push_in_a(t_list **a, t_list **b)
+{
+	while (*b)
+	{
+		if (check_sort(*b) == 1)
+		{
+			pa(a, b);
+			ra(a);
+			pa(a, b);
+			ra(a);
+		}
+		else
+		{
+			pa(a, b);
+			pa(a, b);
+			ra(a);
+			ra(a);
+		}
+	}
+}
+
 void	sortin_five(t_list **a)
 {
-	t_list	*tmp;
 	t_list	*b;
 	int		mediane;
 
@@ -63,28 +83,12 @@ void	sortin_five(t_list **a)
 	while (ft_lstsize(b) < 2)
 	{
 		if ((*a)->content.index > mediane)
-			pb(a,&b);
+			pb(a, &b);
 		else if ((*a)->next->content.index > mediane)
 			sa(a);
 		else
 			rra(a);
 	}
 	sortin_three(a);
-	while (b)
-	{
-		if (check_sort(b) == 1)
-		{
-			pa(a, &b);
-			ra(a);
-			pa(a, &b);
-			ra(a);
-		}
-		else
-		{
-			pa(a, &b);
-			pa(a, &b);
-			ra(a);
-			ra(a);
-		}
-	}
+	push_in_a(a, &b);
 }

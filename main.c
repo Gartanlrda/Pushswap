@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 04:43:01 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/06/27 05:09:14 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int	main(int argc, char **argv)
 			//tmp2 = b;
 			while (tmp)
 			{
-				printf("%s\n", "Liste a:");
 				printf("%i - %i\n", tmp->content.element, tmp->content.index);
 				tmp = tmp -> next;
 			}
