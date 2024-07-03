@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap_utils3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:28:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 05:57:14 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/03 20:23:47 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,12 @@ void	sortin_three(t_list **a)
 {
 	while (check_sort(*a) == 0)
 	{
-		if ((*a)->content.index == 1 && (*a)->next->content.index == 3)
+		if ((*a)->content.index < (*a)->next->content.index)
 			rra(a);
-		else if ((*a)->content.index == 2 && (*a)->next->content.index == 1)
-			sa(a);
-		else if ((*a)->content.index == 2 && (*a)->next->content.index == 3)
-			rra(a);
-		else if ((*a)->content.index == 3 && (*a)->next->content.index == 1)
+		else if (((*a)->content.index > (*a)->next->content.index)
+			&& ((*a)->content.index > ft_lstlast(*a)->content.index))
 			ra(a);
-		else if ((*a)->content.index == 3 && (*a)->next->content.index == 2)
+		else
 			sa(a);
 	}
 	return ;
@@ -59,16 +56,13 @@ static void	push_in_a(t_list **a, t_list **b)
 		if (check_sort(*b) == 1)
 		{
 			pa(a, b);
-			ra(a);
 			pa(a, b);
-			ra(a);
+			sa(a);
 		}
 		else
 		{
 			pa(a, b);
 			pa(a, b);
-			ra(a);
-			ra(a);
 		}
 	}
 }
@@ -82,9 +76,9 @@ void	sortin_five(t_list **a)
 	mediane = 1 + (ft_lstsize(*a) / 2);
 	while (ft_lstsize(b) < 2)
 	{
-		if ((*a)->content.index > mediane)
+		if ((*a)->content.index < mediane)
 			pb(a, &b);
-		else if ((*a)->next->content.index > mediane)
+		else if ((*a)->next->content.index < mediane)
 			sa(a);
 		else
 			rra(a);
