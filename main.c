@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 05:09:14 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/03 18:33:45 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,10 @@ int	main(int argc, char **argv)
 			sortin_five(&a);
 			tmp = a;
 			//tmp2 = b;
+			update_position(a);
 			while (tmp)
 			{
-				printf("%i - %i\n", tmp->content.element, tmp->content.index);
+				printf("%i - %i\n", tmp->content.position, tmp->content.element);
 				tmp = tmp -> next;
 			}
 			/*while (tmp2)

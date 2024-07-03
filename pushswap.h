@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 04:41:25 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/03 19:07:08 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_psnode
 {
 	int	element;
 	int	index;
+	int	position;
 }	t_psnode;
 
 typedef struct s_list
@@ -60,5 +61,7 @@ void		sortin_five(t_list **a);
 void		sortin_three(t_list **a);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		free_lst(t_list *lst);
+void		update_position(t_list *a);
+int			check_quarter(t_list *a, int quarter);
 
 #endif
