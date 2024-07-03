@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 00:59:20 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 01:34:00 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ void    sortin_list(t_list **a)
         quarter = quarter + ((ft_lstsize(*a) + ft_lstsize(b)) / 4);
     }
     sortin_three(a);
-    while (b)
+    update_position(*a);
+    update_position(b);
+    if (b)
+    {
         pa(a, &b);
+    }
 }
