@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/03 19:11:07 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 00:59:20 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,22 @@ int check_quarter(t_list *a, int quarter)
     temp = a;
     while (temp)
     {
-        if (temp->content.index >= quarter)
+        if (temp->content.index > quarter)
             temp = temp->next;
         else
             return (0);
     }
     return (1);
+}
+
+void find_best_op(t_list **a, t_list *b, int quarter)
+{
+    if ((*a)->content.index <= quarter)
+        pb(a, &b);
+    else if ((*a)->next->content.index <= quarter)
+        sa(a);
+    else
+        rra(a);
 }
 
 void    sortin_list(t_list **a)
@@ -48,17 +58,19 @@ void    sortin_list(t_list **a)
     
     b = NULL;
     quarter = ft_lstsize(*a) / 4;
-    while (check_sort(*a) == 0)
+    while (ft_lstsize(*a) >= 3 && check_quarter(*a, quarter) == 0)
     {
-    //prendre 1er tiers
-        while (check_quarter(*a, quarter) == 0)
+        while (ft_lstsize(*a) >= 3 && check_quarter(*a, quarter) == 0)
         {
             update_position(*a);
             update_position(b);
-            
+            find_best_op(a, b, quarter);
+            if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
+                sb(&b);
         }
-        quarter += ((ft_lstsize(*a) + ft_lstsize(b)) / 4);
+        quarter = quarter + ((ft_lstsize(*a) + ft_lstsize(b)) / 4);
     }
-    //push le tiers + pre trier
-    //passer au tiers suivant
+    sortin_three(a);
+    while (b)
+        pa(a, &b);
 }

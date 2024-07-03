@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/03 19:07:08 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/03 22:05:07 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void		ft_lstadd_front(t_list **lst, t_list *new);
 void		free_lst(t_list *lst);
 void		update_position(t_list *a);
 int			check_quarter(t_list *a, int quarter);
+void		sortin_list(t_list **a);
+void		find_best_op(t_list **a, t_list *b, int quarter);
 
 #endif

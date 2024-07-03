@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/03 19:27:38 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 00:03:27 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,12 @@ int	main(int argc, char **argv)
 		if (valid_lst(a) == 1)
 		{
 			index_maker(a);
-			update_position(a);
-			sortin_five(&a);
-			//tmp2 = b;
+			sortin_list(&a);
 			update_position(a);
 			tmp = a;
 			while (tmp)
 			{
-				printf("%i - %i\n", tmp->content.position, tmp->content.element);
+				printf("position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
 				tmp = tmp -> next;
 			}
 			/*while (tmp2)
