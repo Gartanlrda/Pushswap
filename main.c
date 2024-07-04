@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 04:10:27 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 06:41:22 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int	main(int argc, char **argv)
 		{
 			index_maker(a);
 			sortin_list(&a);
-			update_position(a);
 			tmp = a;
 			while (tmp)
 			{
