@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 00:03:27 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 03:47:29 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	makelist(t_list **a, char **pre_sort)
 	i = 0;
 	while (pre_sort[i])
 	{
-		new = ft_lstnew(makenode(ft_atoi(pre_sort[i]), index));
+		new = ft_lstnew(makenode(ft_atoi(pre_sort[i]), index, index));
 		ft_lstadd_back(a, new);
 		i++;
 		index++;

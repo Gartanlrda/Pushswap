@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/03 22:05:07 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 03:46:40 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			ft_lstsize(t_list *lst);
 int			is_valid(char *s);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(t_psnode content);
-t_psnode	makenode(int element, int index);
+t_psnode	makenode(int element, int index, int position);
 int			ft_atoi(const char *nptr);
 int			check_sort(t_list *a);
 int			ft_lstsize(t_list *lst);

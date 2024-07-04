@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:28:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/03 20:23:47 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 02:28:18 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	sortin_three(t_list **a)
 	return ;
 }
 
-static void	push_in_a(t_list **a, t_list **b)
+static void	short_push_in_a(t_list **a, t_list **b)
 {
 	while (*b)
 	{
@@ -84,5 +84,5 @@ void	sortin_five(t_list **a)
 			rra(a);
 	}
 	sortin_three(a);
-	push_in_a(a, &b);
+	short_push_in_a(a, &b);
 }

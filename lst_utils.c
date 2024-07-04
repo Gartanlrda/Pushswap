@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 02:44:58 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/02 19:08:01 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 03:46:14 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-t_psnode	makenode(int element, int index)
+t_psnode	makenode(int element, int index, int position)
 {
 	t_psnode	node;
 
+	node . position = position;
 	node . element = element;
 	node . index = index;
 	return (node);

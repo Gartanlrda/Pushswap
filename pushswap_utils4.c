@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 01:34:00 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 03:52:06 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,23 @@ void find_best_op(t_list **a, t_list *b, int quarter)
     else
         rra(a);
 }
+void    push_in_a(t_list **a, t_list **b)
+{
+    while (*b)
+        pa(a, b);
+}
 
 void    sortin_list(t_list **a)
 {
     int quarter;
     t_list  *b;
+    t_list  *tmp;
     
     b = NULL;
     quarter = ft_lstsize(*a) / 4;
     while (ft_lstsize(*a) >= 3 && check_quarter(*a, quarter) == 0)
     {
-        while (ft_lstsize(*a) >= 3 && check_quarter(*a, quarter) == 0)
+        while (ft_lstsize(*a) >= 3 && check_quarter((*a), quarter) == 0)
         {
             update_position(*a);
             update_position(b);
@@ -73,8 +79,5 @@ void    sortin_list(t_list **a)
     sortin_three(a);
     update_position(*a);
     update_position(b);
-    if (b)
-    {
-        pa(a, &b);
-    }
+    push_in_a(a, &b);
 }
