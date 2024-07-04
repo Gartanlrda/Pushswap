@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 03:52:06 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 04:03:17 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void find_best_op(t_list **a, t_list *b, int quarter)
     else
         rra(a);
 }
-void    push_in_a(t_list **a, t_list **b)
+void    push_in_a(t_list **a, t_list *b)
 {
-    while (*b)
-        pa(a, b);
+    while (b)
+        pa(a, &b);
 }
 
 void    sortin_list(t_list **a)
@@ -68,16 +68,17 @@ void    sortin_list(t_list **a)
     {
         while (ft_lstsize(*a) >= 3 && check_quarter((*a), quarter) == 0)
         {
+            tmp = b;
             update_position(*a);
             update_position(b);
             find_best_op(a, b, quarter);
-            if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
+            if (ft_lstsize(tmp) > 1 && tmp->content.index < tmp->next->content.index)
                 sb(&b);
         }
-        quarter = quarter + ((ft_lstsize(*a) + ft_lstsize(b)) / 4);
+        quarter = quarter + ((ft_lstsize(*a) + ft_lstsize(tmp)) / 4);
     }
     sortin_three(a);
     update_position(*a);
     update_position(b);
-    push_in_a(a, &b);
+    push_in_a(a, b);
 }

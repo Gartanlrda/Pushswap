@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 03:46:40 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/04 03:57:17 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void		ft_lstadd_back(t_list **lst, t_list *new);
 char		**ft_split(char const *s, char c);
 size_t		ft_strlen(const char *str);
 void		*ft_calloc(size_t nb, size_t size);
-void		pushswap(t_list *a);
 int			ft_lstsize(t_list *lst);
 int			is_valid(char *s);
 t_list		*ft_lstlast(t_list *lst);
