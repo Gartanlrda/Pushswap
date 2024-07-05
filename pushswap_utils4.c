@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/05 02:59:07 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/05 20:26:57 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,26 @@ int check_quarter(t_list *a, int quarter)
 
 void find_best_op(t_list **a, t_list **b, int quarter)
 {
-    if ((*a)->content.index <= quarter)
+    if ((*a)->content.index <= quarter && three_highest(a) == 1)
         pb(a, b);
-    else if ((*a)->next->content.index <= quarter)
-        sa(a);
+    //else if ((*a)->next->content.index <= quarter)
+    //    sa(a);
     else
         rra(a);
 }
 void    push_in_a(t_list **a, t_list **b)
 {
     while (*b)
-        pa(a, b);
+    {
+        //if ((*a)->next->content.index > (*a)->content.index)
+          //  sa(a);
+        if ((*a)->content.index < (*b)->content.index)
+            good_position(a, b);
+        //else if ((*a)->content.index > (ft_lstlast(*a)->content.index))
+          //  ra(a);
+        else
+            pa(a, b);
+    }
 }
 
 void    sortin_list(t_list **a)
@@ -78,4 +87,4 @@ void    sortin_list(t_list **a)
     push_in_a(a, &b);
     update_position(*a);
 }
-//trier les quarts en les pushant
+//mettre le plus petit en tete
