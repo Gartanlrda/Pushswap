@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:38:15 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/05 20:22:12 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/05 22:44:18 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    good_position(t_list **a, t_list **b)
     int i;
 
     i = 0;
-    if ((*b)->next->content.index > (*b)->content.index)
+    if (ft_lstsize(*b) > 1 && (*b)->next->content.index > (*b)->content.index)
         sb(b);
     while ((*a)->content.index < (*b)->content.index)
     {
@@ -41,7 +41,7 @@ void    good_position(t_list **a, t_list **b)
         i++;
     }
     pa(a, b);
-    while (i != 0)
+    while (i > 0)
     {
         rra(a);
         i--;
@@ -53,7 +53,7 @@ int    three_highest(t_list **a)
     int max;
 
     max = index_max(a);
-    if ((*a)->content.index > max - 2)
+    if ((*a)->content.index > max - 3)
         return (0);
     else
         return (1);

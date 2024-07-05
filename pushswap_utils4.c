@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/05 20:26:57 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/05 22:41:55 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void    push_in_a(t_list **a, t_list **b)
         if ((*a)->content.index < (*b)->content.index)
             good_position(a, b);
         //else if ((*a)->content.index > (ft_lstlast(*a)->content.index))
-          //  ra(a);
+        //    ra(a);
         else
             pa(a, b);
     }

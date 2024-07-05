@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 04:28:47 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/05 22:39:56 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sb(t_list **b)
 	temp = (*b)->next->content;
 	(*b)->next->content = (*b)->content;
 	(*b)->content = temp;
-	printf("%s\n", "rb");
+	printf("%s\n", "sb");
 }
 
 void	ss(t_list **a, t_list **b)
