@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 06:37:10 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/05 00:23:50 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void		update_position(t_list *a);
 int			check_quarter(t_list *a, int quarter);
 void		sortin_list(t_list **a);
 void		find_best_op(t_list **a, t_list **b, int quarter);
+int 		index_max(t_list **a);
 
 #endif
