@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/06 08:30:28 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 00:39:39 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void    sortin_list(t_list **a)
     t_list  *b;
     
     b = NULL;
-    quarter = index_max(a) / 4;
+    quarter = index_max(a) / 33;
     while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
     {
         while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
@@ -84,4 +84,3 @@ void    sortin_list(t_list **a)
     good_position(a, &b);
     update_position(*a);
 }
-// trouver le meilleur a push en b avec la position

@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:38:15 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/06 08:34:31 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 00:39:27 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,42 +44,6 @@ int index_min(t_list **a)
     return (min);
 }
 
-void    good_position(t_list **a, t_list **b)
-{
-    int i;
-
-    i = 0;
-    while (*b)
-    {
-        if (ft_lstsize(*b) > 1 && (*b)->next->content.index == ((*a)->content.index - 1))
-            sb(b);
-        if (((*b)->content.index == ((*a)->content.index - 1)) || ((*b)->content.index == ((*a)->content.index - 2)))
-            pa(a, b);
-        else if ((*a)->content.index > (*a)->next->content.index)
-            sa(a);
-        else if (i > 0)
-        {
-            while (i > 0)
-            {
-                if (((*b)->content.index == ((*a)->content.index - 1)) || ((*b)->content.index == ((*a)->content.index - 2)))
-                    pa(a, b);
-                else
-                {
-                    rrb(b);
-                    i--;
-                }//trouver un moyen d'alterner si le -2 est push
-            }
-        }
-        else
-            while (((*b)->content.index != ((*a)->content.index - 1)) && ((*b)->content.index != ((*a)->content.index - 2)))
-            {
-                printf("a:%i - b:%i\n", (*a)->content.index, (*b)->content.index);
-                rb(b);
-                i++;
-            }
-    }
-}
-
 int    three_highest(t_list **a)
 {
     int max;
@@ -89,4 +53,55 @@ int    three_highest(t_list **a)
         return (0);
     else
         return (1);
+}
+
+void    good_position(t_list **a, t_list **b)
+{
+    int i;
+    t_list  *tmp;
+    
+    while (*b)
+    {
+        if (is_possible(a, b) == 1)
+            pa(a, b);
+        while ((*b) && i > 0)
+        {
+            if (is_possible(a, b) == 1)
+                pa(a, b);
+            else
+            {
+                rrb(b);
+                i--;
+            }
+        }
+        while (ft_lstsize(*b) > 1 && is_possible(a, b) == 0)
+        {
+            rb(b);// savoir dans quel sens rotate
+            i++;
+        }
+    }
+}
+
+int is_possible(t_list **a, t_list **b)
+{
+    if (*b)
+    {
+        if (ft_lstsize(*b) > 1 && (*b)->next->content.index == ((*a)->content.index - 1))
+            sb(b);
+        if ((*a)->content.index == ((*a)->next->content.index + 1))
+            sa(a);
+        if (((*a)->content.index == ((*a)->next->content.index - 1))
+            && (((*b)->content.index == ((*a)->content.index - 1))
+            || ((*b)->content.index == ((*a)->content.index - 2))))
+            return (1);
+        else if (((*a)->content.index == ((*a)->next->content.index - 2))
+            && (((*b)->content.index == ((*a)->content.index + 1))))
+        {
+            pa(a, b);
+            sa(a);
+        }
+        else
+            return (0);
+    }
+    return (0);
 }
