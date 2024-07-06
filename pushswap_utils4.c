@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/05 22:41:55 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/06 08:30:28 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void find_best_op(t_list **a, t_list **b, int quarter)
 {
     if ((*a)->content.index <= quarter && three_highest(a) == 1)
         pb(a, b);
-    //else if ((*a)->next->content.index <= quarter)
-    //    sa(a);
     else
         rra(a);
 }
@@ -69,11 +67,10 @@ void    sortin_list(t_list **a)
 {
     int quarter;
     t_list  *b;
-    t_list  *tmp;
     
     b = NULL;
     quarter = index_max(a) / 4;
-    while (ft_lstsize(*a) > 3 && check_quarter(*a, quarter) == 0)
+    while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
     {
         while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
         {
@@ -84,7 +81,7 @@ void    sortin_list(t_list **a)
         quarter += quarter;
     }
     sortin_three(a);
-    push_in_a(a, &b);
+    good_position(a, &b);
     update_position(*a);
 }
-//mettre le plus petit en tete
+// trouver le meilleur a push en b avec la position
