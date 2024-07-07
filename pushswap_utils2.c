@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 02:50:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/02 20:54:47 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 22:49:48 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	index_maker(t_list *a)
 		a = start->next;
 		while (a)
 		{
-			if ((start->content.element > (a)->content.element)
-				&& (start->content.index < (a)->content.index)
-				|| (start->content.element < (a)->content.element)
-				&& (start->content.index > (a)->content.index))
+			if (((start->content.element > (a)->content.element)
+				&& (start->content.index < (a)->content.index))
+				|| ((start->content.element < (a)->content.element)
+				&& (start->content.index > (a)->content.index)))
 			{
 				swap_index(a, start);
 				start = temp;

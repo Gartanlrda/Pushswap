@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/07 06:41:35 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 23:43:00 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void    sortin_list(t_list **a)
     int quarter;
     int divider;
     t_list  *b;
-    t_list  *tmp;
+    //t_list  *tmp;
     
     b = NULL;
     divider = index_max(a) / 2;
@@ -129,18 +129,18 @@ void    sortin_list(t_list **a)
         while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
         {
             find_best_op(a, &b, quarter);
-            /*if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
-                sb(&b);*/
+            if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
+                sb(&b);
         }
         quarter = quarter + 25;
     }
     sortin_three(a);
-    tmp = b;
+    /*tmp = b;
 	while (tmp)
 	{
 		printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
 		tmp = tmp -> next;
-	}
-    //good_position(a, &b);
+	}*/
+    good_position(a, &b);
     update_position(*a);
 }

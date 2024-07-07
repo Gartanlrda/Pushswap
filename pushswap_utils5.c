@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:38:15 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/07 05:13:41 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 22:51:17 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int    three_highest(t_list **a, int value)
 void    good_position(t_list **a, t_list **b)
 {
     int i;
-    t_list  *tmp;
     
+    i = 0;
     while (*b)
     {
         if (is_possible(a, b) == 1)
