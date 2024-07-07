@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/07 00:05:13 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 05:14:01 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void		sortin_list(t_list **a);
 void		find_best_op(t_list **a, t_list **b, int quarter);
 int 		index_max(t_list **a);
 void    	good_position(t_list **a, t_list **b);
-int    		three_highest(t_list **a);
+int    		three_highest(t_list **a, int value);
 int			is_possible(t_list **a, t_list **b);
+int 		find_back(t_list **a, int quarter);
+int 		find_front(t_list **a, int quarter);
 
 #endif

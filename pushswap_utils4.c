@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/07 00:39:39 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/07 06:41:35 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    update_position(t_list *a)
     t_list  *temp;
     int     i;
     
-    i = 0;
+    i = 1;
     temp = a;
     while (temp)
     {
@@ -41,46 +41,106 @@ int check_quarter(t_list *a, int quarter)
     return (1);
 }
 
-void find_best_op(t_list **a, t_list **b, int quarter)
+void    find_best_op(t_list**a, t_list **b, int quarter)
 {
-    if ((*a)->content.index <= quarter && three_highest(a) == 1)
+    int i;
+
+    update_position(*a);
+//    printf("%i\n", quarter);
+//    printf("front: %i back: %i\n", find_front(a, quarter), find_back(a, quarter));
+    if (find_front(a, quarter) < find_back(a, quarter))
+    {
+        i = find_front(a, quarter);
+        while (i > 0)
+        {
+            ra(a);
+            i--;
+        }
         pb(a, b);
+    }
     else
-        rra(a);
+    {
+        i = find_back(a, quarter);
+        while (i > 0)
+        {
+            rra(a);
+            i--;
+        }
+        pb(a, b);
+    }
 }
+
+int find_front(t_list **a, int quarter)
+{
+    int     i;
+    t_list  *tmp;
+// appliquer le tri opti pour le push en a
+    i = 0;
+    tmp = *a;
+    while (tmp->content.index > quarter || three_highest(a, tmp->content.index) == 0)
+    {
+        tmp = tmp->next;
+        i++;
+    }
+    return (i);
+}
+
+int find_back(t_list **a, int quarter)
+{
+    t_list  *tmp;
+    int     pos;
+
+    pos = (ft_lstlast(*a)->content.position);
+    while (1)
+    {
+        tmp = *a;
+        while (tmp->content.position < pos)
+            tmp = tmp->next;
+        if (tmp->content.index <= quarter && three_highest(a, tmp->content.index) == 1)
+            return (ft_lstlast(*a)->content.position - tmp->content.position + 1);
+        else
+            pos--;
+    }
+}
+
 void    push_in_a(t_list **a, t_list **b)
 {
     while (*b)
     {
-        //if ((*a)->next->content.index > (*a)->content.index)
-          //  sa(a);
         if ((*a)->content.index < (*b)->content.index)
             good_position(a, b);
-        //else if ((*a)->content.index > (ft_lstlast(*a)->content.index))
-        //    ra(a);
         else
-            pa(a, b);
+            pa(a, b);// Trouver pourquoi ca trie mal
     }
 }
 
 void    sortin_list(t_list **a)
 {
     int quarter;
+    int divider;
     t_list  *b;
+    t_list  *tmp;
     
     b = NULL;
-    quarter = index_max(a) / 33;
+    divider = index_max(a) / 2;
+    quarter = 25;
     while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
     {
         while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
         {
             find_best_op(a, &b, quarter);
-            if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
-                sb(&b);
+            /*if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
+                sb(&b);*/
         }
-        quarter += quarter;
+        quarter = quarter + 25;
     }
     sortin_three(a);
-    good_position(a, &b);
+    tmp = b;
+	while (tmp)
+	{
+		printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+		tmp = tmp -> next;
+	}
+    //good_position(a, &b);
     update_position(*a);
 }
