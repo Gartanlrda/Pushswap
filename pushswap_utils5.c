@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:38:15 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/07 22:51:17 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/08 02:45:29 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,3 +107,6 @@ int is_possible(t_list **a, t_list **b)
     }
     return (0);
 }
+// calculer le meilleur chiffre a push avec le moins de coups a faire
+// nombre de coup pour positionner a / nombre de coup pour positionner B
+
