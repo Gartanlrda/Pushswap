@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:10 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/27 04:27:51 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/08 23:28:14 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,23 @@ void	rrb(t_list **b)
 
 void	rrr(t_list **a, t_list **b)
 {
-	rra(a);
-	rrb(b);
+	t_list		*temp;
+	t_list		*temp2;
+	t_list		*tempb;
+	t_list		*tempb2;
+
+	temp2 = (*a);
+	temp = ft_lstlast(*a);
+	while (temp2->next != temp)
+		temp2 = temp2->next;
+	temp2->next = NULL;
+	ft_lstadd_front(a, temp);
+	tempb2 = (*b);
+	tempb = ft_lstlast(*b);
+	while (tempb2->next != tempb)
+		tempb2 = tempb2->next;
+	tempb2->next = NULL;
+	ft_lstadd_front(b, tempb);
 	printf("%s\n", "rrr");
 }
 

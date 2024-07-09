@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:38:15 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/08 02:45:29 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:14:44 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int    three_highest(t_list **a, int value)
         return (1);
 }
 
-void    good_position(t_list **a, t_list **b)
+/*void    good_position(t_list **a, t_list **b)
 {
     int i;
     
@@ -106,7 +106,90 @@ int is_possible(t_list **a, t_list **b)
             return (0);
     }
     return (0);
-}
+}*/
 // calculer le meilleur chiffre a push avec le moins de coups a faire
 // nombre de coup pour positionner a / nombre de coup pour positionner B
+// checker pour combiner rrr et rr ss
+// checker si les chiffre sera le plus petit de A
+// simuler combien de coup il faudrait a chaque b pour etre a la bonne place dans a
+// +1 pour leur position, +1 pour le push, - le nombre de rota dans a;
+// Determiner la bonne place dans A:
+// Tout les next sont superieurs, while(next <) alors next
+// comment memoriser le nombre de coup pour chaque element?
 
+// Quelles fonctions?
+
+// Place dans A: return int du nbr d'operations a faire
+
+int place_in_a(t_list **a, int index_b)
+{
+    t_list  *tmp;
+    int     i;
+
+    i = 0;
+    tmp = *a;
+    while (tmp->content.index < index_b)
+    {
+        tmp = tmp->next;
+        i++;
+    }
+    return (i);
+}
+
+// Parcourir B en utilisant ^; calculer le resultat et si ^ est plus grand return ^ sinon return position, le tout +1 (push)
+
+int best_start(t_list **a, t_list **b)
+{
+    t_list  *tmp;
+    int     best_op;
+    int     next_op;
+
+    tmp = *b;
+    if (place_in_a(a, tmp->content.index) > tmp->content.position)
+        best_op = place_in_a(a, tmp->content.index);
+    else
+        best_op = tmp->content.position;
+    while (tmp)
+    {
+        if (place_in_a(a, tmp->content.index) > tmp->content.position)
+            next_op = place_in_a(a, tmp->content.index);
+        else
+            next_op = tmp->content.position;
+        if (next_op < best_op)
+            best_op = next_op;
+        tmp = tmp->next;
+    }
+    return (best_op);
+}
+
+// Faire les memes mais en partant de la fin
+
+int best_end(t_list **a, t_list **b)
+{
+    t_list  *tmp;
+    int     best_op;
+    int     next_op;
+    int     size_a;
+    int     size_b;
+
+    tmp = *b;
+    size_a = ft_lstsize(*a);
+    size_b = ft_lstsize(*b);
+    if ((size_a - place_in_a(a, tmp->content.index)) > (size_b - tmp->content.position))
+        best_op = (size_a - place_in_a(a, tmp->content.index));
+    else
+        best_op = (size_b - tmp->content.position);
+    while (tmp)
+    {
+        if ((size_a - (a, tmp->content.index)) > (size_b - tmp->content.position))
+            next_op = (size_a - place_in_a(a, tmp->content.index));
+        else
+            next_op = (size_b - tmp->content.position);
+        if (next_op < best_op)
+            best_op = next_op;
+        tmp = tmp->next;
+    }
+    return (best_op);
+}
+
+// prendre le meilleur resultat des deux et l'appliquer

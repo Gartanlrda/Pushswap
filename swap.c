@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/05 22:39:56 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/08 23:25:58 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,15 @@ void	sb(t_list **b)
 
 void	ss(t_list **a, t_list **b)
 {
-	sa(a);
-	sb(b);
+	t_psnode	temp;
+	t_psnode	tempb;
+
+	temp = (*a)->next->content;
+	(*a)->next->content = (*a)->content;
+	(*a)->content = temp;
+	tempb = (*b)->next->content;
+	(*b)->next->content = (*b)->content;
+	(*b)->content = tempb;
 	printf("%s\n", "ss");
 }
 /*
