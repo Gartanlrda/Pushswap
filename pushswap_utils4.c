@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/09 09:53:57 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/12 13:41:39 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,24 @@ void    update_position(t_list *a)
     temp = a;
     while (temp)
     {
-        temp->content.position = i++;
+        temp->content.position = i;
         temp = temp->next;
+		i++;
+    }
+}
+
+void    update_rev_position(t_list *a)
+{
+    t_list  *temp;
+    int     i;
+    
+    i = ft_lstsize(a) - 1;
+    temp = a;
+    while (temp)
+    {
+        temp->content.position = i;
+        temp = temp->next;
+		i--;
     }
 }
 
@@ -122,8 +138,8 @@ void    sortin_list(t_list **a)
     t_list  *tmp;
     
     b = NULL;
-    divider = index_max(a) / 1;
-    quarter = 25;
+    divider = index_max(a) / 2;
+    quarter = divider;
     while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
     {
         while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
@@ -132,15 +148,15 @@ void    sortin_list(t_list **a)
             if (ft_lstsize(b) > 1 && b->content.index < b->next->content.index)
                 sb(&b);
         }
-        quarter = quarter + 25;
+        quarter = quarter + divider;
     }
     sortin_three(a);
     tmp = b;
-	while (tmp)
-	{
-		printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
-		tmp = tmp -> next;
-	}
+	// while (tmp)
+	// {
+	// 	printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+	// 	tmp = tmp -> next;
+	// }
     good_position(a, &b);
     update_position(*a);
 }

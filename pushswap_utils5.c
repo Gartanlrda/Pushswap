@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:14:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/09 10:12:44 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/12 14:02:28 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,74 +55,9 @@ int	three_highest(t_list **a, int value)
 		return (1);
 }
 
-/*void	good_position(t_list **a, t_list **b)
-{
-	int i;
-		
-	i = 0;
-	while (*b)
-	{
-		if (is_possible(a, b) == 1)
-			pa(a, b);
-		while ((*b) && i > 0)
-		{
-			if (is_possible(a, b) == 1)
-				pa(a, b);
-			else
-			{
-				if (is_possible(a, b) == 1)
-					pa(a, b);
-				rrb(b);
-				i--;
-			}
-		}
-		while (ft_lstsize(*b) > 1 && is_possible(a, b) == 0)
-		{
-			rb(b);
-			i++;
-		}
-	}
-}
-
-int is_possible(t_list **a, t_list **b)
-{
-	if (*b)
-	{
-		if (ft_lstsize(*b) > 1 && (*b)->next->content.index == ((*a)->content.index - 1))
-			sb(b);
-		if ((*a)->content.index == ((*a)->next->content.index + 1))
-			sa(a);
-		if (((*a)->content.index == ((*a)->next->content.index - 1))
-			&& (((*b)->content.index == ((*a)->content.index - 1))
-			|| ((*b)->content.index == ((*a)->content.index - 2))))
-			return (1);
-		else if (((*a)->content.index == ((*a)->next->content.index - 2))
-			&& (((*b)->content.index == ((*a)->content.index + 1))))
-		{
-			pa(a, b);
-			sa(a);
-		}
-		else
-			return (0);
-	}
-	return (0);
-}*/
-// calculer le meilleur chiffre a push avec le moins de coups a faire
-// nombre de coup pour positionner a / nombre de coup pour positionner B
-// checker pour combiner rrr et rr ss
-// checker si les chiffre sera le plus petit de A
-// simuler combien de coup il faudrait a chaque b pour etre a la bonne place dans a
-// +1 pour leur position, +1 pour le push, - le nombre de rota dans a;
-// Determiner la bonne place dans A:
-// Tout les next sont superieurs, while(next <) alors next
-// comment memoriser le nombre de coup pour chaque element?
-
-// Quelles fonctions?
-
-// Place dans A: return int du nbr d'operations a faire
-
 int place_in_a(t_list **a, int index_b)
 {
+	
 	t_list  *tmp;
 	int	 i;
 	int	lower_big;
@@ -130,9 +65,10 @@ int place_in_a(t_list **a, int index_b)
 	i = 0;
 	tmp = *a;
 	lower_big = index_max(a);
-	//printf("index :%i\n", index_b);
+	// printf("index :%i\n", index_b);
 	while (tmp)
 	{
+		// printf("lower big: %i\n", lower_big);
 		if (tmp->content.index > index_b && tmp->content.index < lower_big)
 		{
 			lower_big = tmp->content.index;
@@ -140,31 +76,20 @@ int place_in_a(t_list **a, int index_b)
 		}
 		tmp = tmp->next;
 	}
-	// while (tmp)
-	// {
-	// 	if (tmp->content.index < index_b)
-	// 	{
-	// 		if (lower_big > tmp->content.index)
-	// 		{
-	// 			lower_big = tmp->content.index;
-	// 			i = tmp->content.position;
-	// 		}
-	// 	}
-	// 	tmp = tmp->next;
-	// }
-	//printf("i :%i\n", i);
 	return (i);
 }
 
-// Parcourir B en utilisant ^; calculer le resultat et si ^ est plus grand return ^ sinon return position, le tout +1 (push)
-
-int best_start(t_list **a, t_list **b)
+int best_rotate(t_list **a, t_list **b)
 {
-	t_list  *tmp;
-	int	 best_op;
-	int	 next_op;
+	t_list	*tmp;
+	int		best_op;
+	int		next_op;
+	int		size_a;
 
+	update_position(*a);
+	update_position(*b);
 	tmp = *b;
+	size_a = ft_lstsize(*a);
 	if (place_in_a(a, tmp->content.index) > tmp->content.position)
 		best_op = place_in_a(a, tmp->content.index);
 	else
@@ -179,7 +104,7 @@ int best_start(t_list **a, t_list **b)
 			best_op = next_op;
 		tmp = tmp->next;
 	}
-	printf("rotate : %d\n", best_op);
+	// printf("rotate : %d\n", best_op);
 	return (best_op);
 }
 
@@ -190,6 +115,8 @@ int start_position(t_list **a, t_list **b)
 	int	 next_op;
 	int	 position;
 
+	update_position(*a);
+	update_position(*b);
 	tmp = *b;
 	position = tmp->content.position;
 	if (place_in_a(a, tmp->content.index) > tmp->content.position)
@@ -211,34 +138,27 @@ int start_position(t_list **a, t_list **b)
 	}
 	return (position);
 }
-// Faire les memes mais en partant de la fin
 
-int best_end(t_list **a, t_list **b)
+int best_reverse(t_list **a, t_list **b)
 {
-	t_list  *tmp;
-	int	 best_op;
-	int	 next_op;
-	int	 size_a;
-	int	 size_b;
+	t_list	*tmp;
+	int		best_op;
+	int		next_op;
+	int		size_a;
 
+	update_rev_position(*a);
+	update_rev_position(*b);
 	tmp = *b;
 	size_a = ft_lstsize(*a);
-	size_b = ft_lstsize(*b);
-	if ((size_a - place_in_a(a, tmp->content.index)) > (size_b - tmp->content.position))
-		best_op = (size_a - place_in_a(a, tmp->content.index));
-	else
-		best_op = (size_b - tmp->content.position);
+	best_op = place_in_a(a, tmp->content.index);
 	while (tmp)
 	{
-		if ((size_a - place_in_a(a, tmp->content.index)) > (size_b - tmp->content.position))
-			next_op = (size_a - place_in_a(a, tmp->content.index));
-		else
-			next_op = (size_b - tmp->content.position);
+		next_op = place_in_a(a, tmp->content.index);
 		if (next_op < best_op)
 			best_op = next_op;
 		tmp = tmp->next;
 	}
-	printf("reverse : %d\n", best_op);
+	// printf("reverse : %d\n", best_op);
 	return (best_op);
 }
 
@@ -247,24 +167,16 @@ int end_position(t_list **a, t_list **b)
 	t_list  *tmp;
 	int	 best_op;
 	int	 next_op;
-	int	 size_a;
-	int	 size_b;
 	int	 position;
 
+	update_rev_position(*a);
+	update_rev_position(*b);
 	tmp = *b;
-	size_a = ft_lstsize(*a);
-	size_b = ft_lstsize(*b);
 	position = tmp->content.position;
-	if ((size_a - place_in_a(a, tmp->content.index)) > (size_b - tmp->content.position))
-		best_op = (size_a - place_in_a(a, tmp->content.index));
-	else
-		best_op = (size_b - tmp->content.position);
+	best_op = place_in_a(a, tmp->content.index);
 	while (tmp)
 	{
-		if ((size_a - place_in_a(a, tmp->content.index)) > (size_b - tmp->content.position))
-			next_op = (size_a - place_in_a(a, tmp->content.index));
-		else
-			next_op = (size_b - tmp->content.position);
+		next_op = place_in_a(a, tmp->content.index);
 		if (next_op < best_op)
 		{
 			best_op = next_op;
@@ -287,7 +199,8 @@ void	good_position(t_list **a, t_list **b)
 	{
 		update_position(*a);
 		update_position(*b);
-		if (best_start(a, b) < best_end(a, b))
+		printf("best reverse: %i - best rotate: %i\n", best_reverse(a, b), best_rotate(a, b));
+		if (best_rotate(a, b) <= best_reverse(a, b))
 			push_start(a, b);
 		else
 			push_end(a, b);
@@ -320,10 +233,11 @@ void	push_start(t_list **a, t_list **b)
 	while (tmp->content.position != pos_b)
 		tmp = tmp->next;
 	pos_a = place_in_a(a, tmp->content.index);
+	// printf("pos a %i - pos b %i\n", pos_a, pos_b);
 	if (pos_a > pos_b)
 	{
 		dual = pos_a - pos_b;
-		printf("dual rotate : %d\n", pos_b);
+		// printf("dual rotate : %d\n", pos_b);
 		while (pos_b)
 		{
 			rr(a, b);
@@ -338,7 +252,7 @@ void	push_start(t_list **a, t_list **b)
 	else
 	{
 		dual = pos_b - pos_a;
-		printf("dual rotate : %d\n", pos_a);
+		// printf("dual rotate : %d\n", pos_a);
 		while (pos_a)
 		{
 			rr(a, b);
@@ -353,9 +267,10 @@ void	push_start(t_list **a, t_list **b)
 	// tmp = *a;
 	// while (tmp)
 	// {
-	// 	printf("a - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+		// printf("a - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
 	// 	tmp = tmp -> next;
 	// }
+	 printf("PUSH START\n");
 	pa(a, b);
 }
 
@@ -371,10 +286,11 @@ void	push_end(t_list **a, t_list **b)
 	while (tmp->content.position != pos_b)
 		tmp = tmp->next;
 	pos_a = place_in_a(a, tmp->content.index);
+	// printf("pos a %i - pos b %i\n", pos_a, pos_b);
 	if (pos_a > pos_b)
 	{
 		dual = pos_a - pos_b;
-		printf("dual reverse : %d\n", pos_b);
+		// printf("dual reverse : %d\n", pos_b);
 		while (pos_b)
 		{
 			rrr(a, b);
@@ -389,7 +305,7 @@ void	push_end(t_list **a, t_list **b)
 	else
 	{
 		dual = pos_b - pos_a;
-		printf("dual reverse : %d\n", pos_a);
+		// printf("dual reverse : %d\n", pos_a);
 		while (pos_a)
 		{
 			rrr(a, b);
@@ -404,9 +320,10 @@ void	push_end(t_list **a, t_list **b)
 /* 	tmp = *a;
 	while (tmp)
 	{
-		printf("a - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+		// printf("a - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
 		tmp = tmp -> next;
 	} */
+	 printf("PUSH END\n");
 	pa(a, b);
 }
-// prendre le meilleur resultat des deux et l'appliquer
+// ./push_swap 6 22 17 11 16 13 1 19 2 8 15 3 10 5 25 23 4 18 21 12 7 9 14 20 24

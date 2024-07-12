@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/09 08:33:09 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/12 13:12:49 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int best_end(t_list **a, t_list **b);
 int end_position(t_list **a, t_list **b);
 void	push_start(t_list **a, t_list **b);
 void	push_end(t_list **a, t_list **b);
+void	update_rev_position(t_list *a);
 
 
 #endif

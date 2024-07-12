@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/09 09:02:47 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/12 13:35:14 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,21 @@ int	main(int argc, char **argv)
 			index_maker(a);
 			//place_in_a(&a, 11);
 			sortin_list(&a);
+			// while (check_sort(a) != 1)
+			// 	rra(&a);
  			tmp = a;
-			while (tmp)
-			{
-				printf("position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
-				tmp = tmp -> next;
-			}
-			tmp2 = b;
-			while (tmp2)
-			{
-				printf("%s\n", "Liste b:");
-				printf("%i - %i\n", tmp2->content.element, tmp2->content.index);
-				tmp2 = tmp2 -> next;
-			}
+			// while (tmp)
+			// {
+			// 	printf("position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+			// 	tmp = tmp -> next;
+			// }
+			 tmp2 = b;
+			// while (tmp2)
+			// {
+			// 	printf("%s\n", "Liste b:");
+			// 	printf("%i - %i\n", tmp2->content.element, tmp2->content.index);
+			// 	tmp2 = tmp2 -> next;
+			// }
 		}
 		else
 			write(2, "Error\n", 6);
