@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/12 13:41:39 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/13 17:21:38 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,16 @@ int find_back(t_list **a, int quarter)
     }
 }
 
-void    push_in_a(t_list **a, t_list **b)
-{
-    while (*b)
-    {
-        if ((*a)->content.index < (*b)->content.index)
-            good_position(a, b);
-        else
-            pa(a, b);// Trouver pourquoi ca trie mal
-    }
-}
+// void    push_in_a(t_list **a, t_list **b)
+// {
+//     while (*b)
+//     {
+//         if ((*a)->content.index < (*b)->content.index)
+//             good_position(a, b);
+//         else
+//             pa(a, b);
+//     }
+// }
 
 void    sortin_list(t_list **a)
 {
@@ -157,6 +157,5 @@ void    sortin_list(t_list **a)
 	// 	printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
 	// 	tmp = tmp -> next;
 	// }
-    good_position(a, &b);
-    update_position(*a);
+    push_the_f(a, &b);
 }

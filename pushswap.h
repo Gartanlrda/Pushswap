@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/12 13:12:49 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/13 17:15:10 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,26 @@ int			check_quarter(t_list *a, int quarter);
 void		sortin_list(t_list **a);
 void		find_best_op(t_list **a, t_list **b, int quarter);
 int 		index_max(t_list **a);
-void    	good_position(t_list **a, t_list **b);
+// void    	good_position(t_list **a, t_list **b);
 int    		three_highest(t_list **a, int value);
-int			is_possible(t_list **a, t_list **b);
+// int			is_possible(t_list **a, t_list **b);
 int 		find_back(t_list **a, int quarter);
 int 		find_front(t_list **a, int quarter);
-int place_in_a(t_list **a, int index_b);
-int best_start(t_list **a, t_list **b);
-int start_position(t_list **a, t_list **b);
-int best_end(t_list **a, t_list **b);
-int end_position(t_list **a, t_list **b);
-void	push_start(t_list **a, t_list **b);
-void	push_end(t_list **a, t_list **b);
+// int place_in_a(t_list **a, int index_b);
+// int best_start(t_list **a, t_list **b);
+// int start_position(t_list **a, t_list **b);
+// int best_end(t_list **a, t_list **b);
+// int end_position(t_list **a, t_list **b);
+// void	push_start(t_list **a, t_list **b);
+// void	push_end(t_list **a, t_list **b);
 void	update_rev_position(t_list *a);
-
+int op_in_a(t_list **a, int index_b);
+int	best_b(t_list **a, t_list **b);
+int	best_a(t_list **a, t_list **b);
+int	op_in_b(t_list **a, t_list **b);
+void	push_the_f(t_list **a, t_list **b);
+void	dual_rotate(t_list **a, t_list **b);
+void	dual_reverse(t_list **a, t_list **b);
+void	mix_push(t_list **a, t_list **b);
 
 #endif
