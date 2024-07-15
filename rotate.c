@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:13:49 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 13:45:12 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 15:24:44 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,26 @@ void	rr(t_list **a, t_list **b)
 	temp->next = NULL;
 	ft_lstadd_back(a, temp);
 	printf("%s\n", "rr");
+}
+
+void	do_pushswap(t_list **a)
+{
+	if (valid_lst(*a) == 1)
+	{
+		index_maker(*a);
+		sortin_list(a);
+		if ((*a)->content.index <= (ft_lstsize(*a) / 2))
+		{
+			while (check_sort(*a) != 1)
+				rra(a);
+		}
+		else
+		{
+			while (check_sort(*a) != 1)
+				ra(a);
+		}
+	}
+	else
+		write(2, "Error\n", 6);
+	free_lst(*a);
 }

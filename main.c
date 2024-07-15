@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 14:01:48 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 15:24:35 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,11 @@ static void	free_tab(char **tab)
 int	main(int argc, char **argv)
 {
 	t_list	*a;
-	t_list	*b;
 	char	**pre_sort;
 	int		i;
 
 	i = 1;
 	a = NULL;
-	b = NULL;
 	if (argc > 1)
 	{
 		while (argv[i])
@@ -100,28 +98,9 @@ int	main(int argc, char **argv)
 			{
 				free_lst(a);
 				write(2, "Error\n", 6);
-				return (0);
 			}
 			i++;
 		}
-		if (valid_lst(a) == 1)
-		{
-			index_maker(a);
-			sortin_list(&a);
-			if (a->content.position >= (ft_lstsize(a) / 2))
-			{
-				while (check_sort(a) != 1)
-					rra(&a);
-			}
-			else
-			{
-				while (check_sort(a) != 1)
-					ra(&a);
-			}
-		}
-		else
-			write(2, "Error\n", 6);
-		free_lst(a);
-		free_lst(b);
+		do_pushswap(&a);
 	}
 }
