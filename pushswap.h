@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:21:51 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 15:26:04 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void		mix_push(t_list **a, t_list **b);
 void		rotator_a(t_list **a, t_list **b, int rev_a);
 void		rotator_b(t_list **a, t_list **b, int rev_b);
 void		do_pushswap(t_list **a);
+int			valid_lst(t_list *lst);
 
 #endif

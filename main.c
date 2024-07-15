@@ -6,13 +6,13 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:24:35 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 15:25:50 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	valid_lst(t_list *lst)
+int	valid_lst(t_list *lst)
 {
 	t_list	*checker;
 	t_list	*start;
