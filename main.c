@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/12 13:35:14 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 12:58:13 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,15 @@ int	main(int argc, char **argv)
 			index_maker(a);
 			//place_in_a(&a, 11);
 			sortin_list(&a);
-			// while (check_sort(a) != 1)
-			// 	rra(&a);
+			// printf("exit\n");
+			if (a->content.position >= (ft_lstsize(a) / 2))
+				{
+					while (check_sort(a) != 1)
+						rra(&a);
+				}
+			else
+				while (check_sort(a) != 1)
+					ra(&a);
  			tmp = a;
 			// while (tmp)
 			// {

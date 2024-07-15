@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:14:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/13 17:20:21 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 12:49:54 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int op_in_a(t_list **a, int index_b)
 	int	 i;
 	int	lower_big;
 	
+	// printf("opinA\n");
 	i = 0;
 	tmp = *a;
 	lower_big = index_max(a);
@@ -77,9 +78,15 @@ int op_in_a(t_list **a, int index_b)
 		tmp = tmp->next;
 	}
 	if (i <= ft_lstsize(*a)/ 2)
+	{
+		// printf("op_in_a: %i\n", i);
 		return (i);
+	}
 	else
-		return (ft_lstsize(*a) - i + 1);
+	{
+		// printf("op_in_a: %i\n", ft_lstsize(*a) - i + 1);
+		return (ft_lstsize(*a) - i);
+	}
 }
 // meilleurs coups de A
 
@@ -90,6 +97,7 @@ int	best_b(t_list **a, t_list **b)
 	int		best;
 	t_list	*tmp;
 
+	// printf("bestB\n");
 	tmp = *b;
 	cheapest = 2147483647;
 	update_position(*a);
@@ -105,7 +113,9 @@ int	best_b(t_list **a, t_list **b)
 			cheapest = current;
 			best = tmp->content.position;
 		}
+
 		tmp = tmp->next;
+		// printf("best_b: %i\n", best);
 	}
 	return (best);
 }
@@ -118,6 +128,7 @@ int	best_a(t_list **a, t_list **b)
 	int		index;
 	t_list *tmp;
 
+	// printf("bestA\n");
 	i = 0;
 	lower_big = index_max(a);
 	tmp = *b;
@@ -134,17 +145,19 @@ int	best_a(t_list **a, t_list **b)
 		}
 		tmp = tmp->next;
 	}
+	// printf("best_a: %i\n", i);
 	return (i);
 }
 
 //best A a push
 
-int	op_in_b(t_list **a, t_list **b)
+int	op_in_total(t_list **a, t_list **b)
 {
 	int		current;
 	int		cheapest;
 	t_list	*tmp;
 
+	// printf("opinB\n");
 	tmp = *b;
 	cheapest = 2147483647;
 	update_position(*a);
@@ -158,10 +171,32 @@ int	op_in_b(t_list **a, t_list **b)
 		if (current < cheapest)
 			cheapest = current;
 		tmp = tmp->next;
+		// printf("op_in_total: %i\n", cheapest);
 	}
 	return (cheapest);
 }
+int	op_in_b(t_list **a, t_list **b)
+{
+	int		current;
+	int		cheapest;
+	t_list	*tmp;
 
+	// printf("opinB\n");
+	tmp = *b;
+	cheapest = 2147483647;
+	update_position(*a);
+	update_position(*b);
+	
+	while (tmp->content.position != best_b(a, b))
+		tmp = tmp->next;
+	current = best_b(a, b);
+	if (current <= ft_lstsize(*b)/ 2)
+		cheapest = current;
+	else
+		cheapest = ft_lstsize(*b) - current;
+	// printf("op_in_b: %i\n", cheapest);
+	return (cheapest);
+}
 // meilleurs coups de B
 
 void	push_the_f(t_list **a, t_list **b)
@@ -170,7 +205,7 @@ void	push_the_f(t_list **a, t_list **b)
 	int		rotate_a;
 	int		rotate_b;
 
-	while (b)
+	while (*b)
 	{
 		update_position(*a);
 		update_position(*b);
@@ -188,20 +223,21 @@ void	push_the_f(t_list **a, t_list **b)
 			mix_push(a, b);
 		pa(a, b);
 		tmp = *a;
-		while (tmp)
-		{
-			printf("a - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
-			tmp = tmp -> next;
-		}
-		printf("\n");
+		// while (tmp)
+		// {
+		// 	printf("a - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+		// 	tmp = tmp -> next;
+		// }
+		// printf("\n");
 		tmp = *b;
-		while (tmp)
-		{
-			printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
-			tmp = tmp -> next;
-		}
-		printf("\n");
+		// while (tmp)
+		// {
+		// 	printf("b - position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
+		// 	tmp = tmp -> next;
+		// }
+		// printf("\n");
 	}
+	// printf("end_pushthef\n");
 }
 
 void	dual_rotate(t_list **a, t_list **b)
@@ -270,6 +306,7 @@ void	mix_push(t_list **a, t_list **b)
 
 	rev_b = op_in_b(a, b);
 	tmp = *b;
+	// printf("mix_push\n");
 	while (tmp->content.position != best_b(a, b))
 		tmp = tmp->next;
 	rev_a = op_in_a(a, tmp->content.index);
@@ -551,3 +588,4 @@ void	push_end(t_list **a, t_list **b)
 	pa(a, b);
 }*/
 // ./push_swap 6 22 17 11 16 13 1 19 2 8 15 3 10 5 25 23 4 18 21 12 7 9 14 20 24
+// 45 44 14 47 50 3 4 5 76 2 12 60 29 58 34 53 98 25 55 59 33 28 78 20 32 68 10 43 72 86 88 26 36 82 56 54 15 48 74 67 22 49 94 52 75 65 100 92 87 95 23 37 91 7 80 38 83 17 79 41 42 61 27 77 85 70 9 18 13 71 40 30 66 1 31 64 6 63 46 11 96 89 8 24 84 93 62 69 19 97 35 81 51 73 39 90 57 16 99 21
