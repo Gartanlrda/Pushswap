@@ -6,7 +6,7 @@
 #    By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 12:05:39 by ggoy              #+#    #+#              #
-#    Updated: 2024/07/09 08:38:48 by ggoy             ###   ########.fr        #
+#    Updated: 2024/07/15 14:20:45 by ggoy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRC_FILES	= lst_utils.c\
 			pushswap_utils3.c\
 			pushswap_utils4.c\
 			pushswap_utils5.c\
+			pushswap_utils6.c\
+			pushswap_utils7.c\
 			reverse_rotate.c\
 			rotate.c\
 			swap.c

@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 13:35:26 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:18:30 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ void		push_the_f(t_list **a, t_list **b);
 void		dual_rotate(t_list **a, t_list **b);
 void		dual_reverse(t_list **a, t_list **b);
 void		mix_push(t_list **a, t_list **b);
+void		rotator_a(t_list **a, t_list **b, int rev_a);
+void		rotator_b(t_list **a, t_list **b, int rev_b);
 
 #endif

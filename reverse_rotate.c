@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:10 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 13:39:53 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:24:16 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,20 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new -> next = *lst;
 	*lst = new;
+}
+
+int	index_min(t_list **a)
+{
+	int		min;
+	t_list	*temp;
+
+	min = 2147483647;
+	temp = *a;
+	while (temp)
+	{
+		if (temp->content.index < min)
+			min = temp->content.index;
+		temp = temp->next;
+	}
+	return (min);
 }

@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 13:57:55 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:10:24 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,45 +98,4 @@ int	find_front(t_list **a, int quarter)
 		i++;
 	}
 	return (i);
-}
-
-int	find_back(t_list **a, int quarter)
-{
-	t_list	*tmp;
-	int		pos;
-
-	pos = (ft_lstlast(*a)->content.position);
-	while (1)
-	{
-		tmp = *a;
-		while (tmp->content.position < pos)
-			tmp = tmp->next;
-		if (tmp->content.index <= quarter
-			&& three_highest(a, tmp->content.index) == 1)
-			return (ft_lstlast(*a)->content.position \
-				- tmp->content.position + 1);
-		else
-			pos--;
-	}
-}
-
-void	sortin_list(t_list **a)
-{
-	int		quarter;
-	int		divider;
-	t_list	*b;
-	t_list	*tmp;
-
-	b = NULL;
-	divider = index_max(a) / 3;
-	quarter = divider;
-	while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
-	{
-		while (ft_lstsize(*a) > 3 && check_quarter((*a), quarter) == 0)
-			find_best_op(a, &b, quarter);
-		quarter = quarter + divider;
-	}
-	sortin_three(a);
-	tmp = b;
-	push_the_f(a, &b);
 }
