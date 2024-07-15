@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:14:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 14:10:00 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 15:52:39 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int	best_b(t_list **a, t_list **b)
 
 	tmp = *b;
 	cheapest = 2147483647;
-	update_position(*a);
-	update_position(*b);
 	while (tmp)
 	{
 		if (tmp->content.position <= ft_lstsize(*b) / 2)
@@ -98,8 +96,6 @@ int	op_in_total(t_list **a, t_list **b)
 
 	tmp = *b;
 	cheapest = 2147483647;
-	update_position(*a);
-	update_position(*b);
 	while (tmp)
 	{
 		if (tmp->content.position <= ft_lstsize(*b) / 2)
@@ -122,8 +118,6 @@ int	op_in_b(t_list **a, t_list **b)
 
 	tmp = *b;
 	cheapest = 2147483647;
-	update_position(*a);
-	update_position(*b);
 	while (tmp->content.position != best_b(a, b))
 		tmp = tmp->next;
 	current = best_b(a, b);

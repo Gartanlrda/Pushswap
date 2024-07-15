@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:25:50 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 15:49:20 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,37 @@ int	valid_lst(t_list *lst)
 	return (1);
 }
 
-void	free_lst(t_list *lst)
+void	do_pushswap(t_list **a)
 {
 	t_list	*tmp;
 
-	while (lst)
+	if (valid_lst(*a) == 1)
 	{
-		tmp = (lst)->next;
-		free(lst);
-		lst = tmp;
+		index_maker(*a);
+		sortin_list(a);
+		if ((*a)->content.index <= (ft_lstsize(*a) / 2))
+		{
+			while (check_sort(*a) != 1)
+				rra(a);
+		}
+		else
+		{
+			while (check_sort(*a) != 1)
+				ra(a);
+		}
+		tmp = *a;
 	}
+	else
+		write(2, "Error\n", 6);
+	free_lst(*a);
 }
+
+/*		while (tmp)
+		{
+			printf("position: %i - index: %i - element: %i;\n", \
+			tmp->content.position, tmp->content.index, tmp->content.element);
+			tmp = tmp->next;
+		}*/
 
 static void	makelist(t_list **a, char **pre_sort)
 {
