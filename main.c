@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 12:58:13 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:01:48 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	t_list	*tmp;
-	t_list	*tmp2;
 	char	**pre_sort;
 	int		i;
 
@@ -109,30 +107,17 @@ int	main(int argc, char **argv)
 		if (valid_lst(a) == 1)
 		{
 			index_maker(a);
-			//place_in_a(&a, 11);
 			sortin_list(&a);
-			// printf("exit\n");
 			if (a->content.position >= (ft_lstsize(a) / 2))
-				{
-					while (check_sort(a) != 1)
-						rra(&a);
-				}
+			{
+				while (check_sort(a) != 1)
+					rra(&a);
+			}
 			else
+			{
 				while (check_sort(a) != 1)
 					ra(&a);
- 			tmp = a;
-			// while (tmp)
-			// {
-			// 	printf("position: %i - index: %i - element:%i\n", tmp->content.position, tmp->content.index, tmp->content.element);
-			// 	tmp = tmp -> next;
-			// }
-			 tmp2 = b;
-			// while (tmp2)
-			// {
-			// 	printf("%s\n", "Liste b:");
-			// 	printf("%i - %i\n", tmp2->content.element, tmp2->content.index);
-			// 	tmp2 = tmp2 -> next;
-			// }
+			}
 		}
 		else
 			write(2, "Error\n", 6);
