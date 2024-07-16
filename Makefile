@@ -6,7 +6,7 @@
 #    By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 12:05:39 by ggoy              #+#    #+#              #
-#    Updated: 2024/07/15 14:20:45 by ggoy             ###   ########.fr        #
+#    Updated: 2024/07/16 12:02:33 by ggoy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@
 NAME		= push_swap
 CFLAGS		= -Wall -Wextra -Werror
 CC		= cc
-
 ################################################################################
 #######################         SOURCES         ################################
 ################################################################################
@@ -34,7 +33,9 @@ SRC_FILES	= lst_utils.c\
 			pushswap_utils7.c\
 			reverse_rotate.c\
 			rotate.c\
-			swap.c
+			swap.c\
+			ft_printf.c\
+			ft_utils1.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
@@ -45,10 +46,9 @@ OBJ_FILES	= $(SRC_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
-	$(CC) -o $(NAME) $(OBJ_FILES)
-
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES)
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	rm -f $(OBJ_FILES)

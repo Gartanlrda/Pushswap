@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:49:20 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/16 11:42:28 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	do_pushswap(t_list **a)
 
 /*		while (tmp)
 		{
-			printf("position: %i - index: %i - element: %i;\n", \
+			ft_printf("position: %i - index: %i - element: %i;\n", \
 			tmp->content.position, tmp->content.index, tmp->content.element);
 			tmp = tmp->next;
 		}*/

@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 13:44:57 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/16 11:44:11 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_list **a)
 	temp = (*a)->next->content;
 	(*a)->next->content = (*a)->content;
 	(*a)->content = temp;
-	printf("%s\n", "sa");
+	ft_printf("%s\n", "sa");
 }
 
 void	sb(t_list **b)
@@ -29,7 +29,7 @@ void	sb(t_list **b)
 	temp = (*b)->next->content;
 	(*b)->next->content = (*b)->content;
 	(*b)->content = temp;
-	printf("%s\n", "sb");
+	ft_printf("%s\n", "sb");
 }
 
 void	ss(t_list **a, t_list **b)
@@ -43,5 +43,5 @@ void	ss(t_list **a, t_list **b)
 	tempb = (*b)->next->content;
 	(*b)->next->content = (*b)->content;
 	(*b)->content = tempb;
-	printf("%s\n", "ss");
+	ft_printf("%s\n", "ss");
 }

@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:13:49 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:39:35 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/16 11:43:55 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ra(t_list **a)
 	(*a) = (*a)->next;
 	temp->next = NULL;
 	ft_lstadd_back(a, temp);
-	printf("%s\n", "ra");
+	ft_printf("%s\n", "ra");
 }
 
 void	rb(t_list **b)
@@ -31,7 +31,7 @@ void	rb(t_list **b)
 	(*b) = (*b)->next;
 	temp->next = NULL;
 	ft_lstadd_back(b, temp);
-	printf("%s\n", "rb");
+	ft_printf("%s\n", "rb");
 }
 
 void	rr(t_list **a, t_list **b)
@@ -47,7 +47,7 @@ void	rr(t_list **a, t_list **b)
 	(*a) = (*a)->next;
 	temp->next = NULL;
 	ft_lstadd_back(a, temp);
-	printf("%s\n", "rr");
+	ft_printf("%s\n", "rr");
 }
 
 void	free_lst(t_list *lst)

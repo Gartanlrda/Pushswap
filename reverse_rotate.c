@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:22:10 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 14:24:16 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/16 11:43:38 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rra(t_list **a)
 		temp2 = temp2->next;
 	temp2->next = NULL;
 	ft_lstadd_front(a, temp);
-	printf("%s\n", "rra");
+	ft_printf("%s\n", "rra");
 }
 
 void	rrb(t_list **b)
@@ -37,7 +37,7 @@ void	rrb(t_list **b)
 		temp2 = temp2->next;
 	temp2->next = NULL;
 	ft_lstadd_front(b, temp);
-	printf("%s\n", "rrb");
+	ft_printf("%s\n", "rrb");
 }
 
 void	rrr(t_list **a, t_list **b)
@@ -59,7 +59,7 @@ void	rrr(t_list **a, t_list **b)
 		tempb2 = tempb2->next;
 	tempb2->next = NULL;
 	ft_lstadd_front(b, tempb);
-	printf("%s\n", "rrr");
+	ft_printf("%s\n", "rrr");
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
