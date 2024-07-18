@@ -6,33 +6,11 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 07:28:06 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/04 04:03:02 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 16:33:59 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return ((size_t)i);
-}
-
-int	check_sort(t_list *a)
-{
-	while (a->next)
-	{
-		if (a->next->content.index > a->content.index)
-			a = a->next;
-		else
-			return (0);
-	}
-	return (1);
-}
 
 void	sortin_three(t_list **a)
 {

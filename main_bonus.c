@@ -1,70 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 14:29:49 by ggoy             ###   ########.fr       */
+/*   Created: 2024/07/18 14:13:21 by ggoy              #+#    #+#             */
+/*   Updated: 2024/07/18 17:52:30 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-int	valid_lst(t_list *lst)
-{
-	t_list	*checker;
-	t_list	*start;
-
-	start = lst;
-	lst = lst->next;
-	while (lst)
-	{
-		checker = start;
-		while (checker && checker->content.index < lst->content.index)
-		{
-			if (checker->content.element == lst->content.element)
-				return (0);
-			else
-				checker = checker->next;
-		}
-		lst = lst->next;
-	}
-	return (1);
-}
-
-void	do_pushswap(t_list **a)
-{
-	t_list	*tmp;
-
-	if (valid_lst(*a) == 1)
-	{
-		index_maker(*a);
-		sortin_list(a);
-		if ((*a)->content.index <= (ft_lstsize(*a) / 2))
-		{
-			while (check_sort(*a) != 1)
-				rra(a);
-		}
-		else
-		{
-			while (check_sort(*a) != 1)
-				ra(a);
-		}
-		tmp = *a;
-	}
-	else
-		write(2, "Error\n", 6);
-	free_lst(*a);
-}
-
-/*		while (tmp)
-		{
-			ft_printf("position: %i - index: %i - element: %i;\n", \
-			tmp->content.position, tmp->content.index, tmp->content.element);
-			tmp = tmp->next;
-		}*/
 
 static void	makelist(t_list **a, char **pre_sort)
 {
@@ -96,6 +42,47 @@ static void	free_tab(char **tab)
 	free(tab);
 }
 
+int	valid_lst(t_list *lst)
+{
+	t_list	*checker;
+	t_list	*start;
+
+	start = lst;
+	lst = lst->next;
+	while (lst)
+	{
+		checker = start;
+		while (checker && checker->content.index < lst->content.index)
+		{
+			if (checker->content.element == lst->content.element)
+				return (0);
+			else
+				checker = checker->next;
+		}
+		lst = lst->next;
+	}
+	return (1);
+}
+
+void	do_pushswap_bonus(t_list **a)
+{
+	if (valid_lst(*a) == 1)
+	{
+		index_maker(*a);
+		do_manual_sort(a);
+	}
+	else
+	{
+		write(2, "Error\n", 6);
+		return ;
+	}
+	if (check_sort(*a) == 1)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+	free_lst(*a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
@@ -121,6 +108,6 @@ int	main(int argc, char **argv)
 			}
 			i++;
 		}
-		do_pushswap(&a);
+		do_pushswap_bonus(&a);
 	}
 }

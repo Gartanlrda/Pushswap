@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 14:08:01 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 18:02:06 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@
 # include <string.h>
 # include <stdarg.h>
 #include <fcntl.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
-# endif
+# include "get_next_line.h"
 
 typedef struct s_psnode
 {
@@ -58,7 +55,7 @@ void		pa(t_list **a, t_list **b);
 void		pb(t_list **a, t_list **b);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 char		**ft_split(char const *s, char c);
-size_t		ft_strlen(const char *str);
+int			ft_strlen(const char *str);
 void		*ft_calloc(size_t nb, size_t size);
 int			ft_lstsize(t_list *lst);
 int			is_valid(char *s);
@@ -105,6 +102,13 @@ char		*ft_strjoin(char *s1, char *s2, int len);
 char		*ft_strdup(char *s);
 char		*ft_kastonkrane(char *status, char temp[BUFFER_SIZE + 1]);
 int			ft_check(char *s);
-char		*get_next_line(int fd)
+void		do_pushswap_bonus(t_list **a);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+void		do_manual_sort(t_list **a);
+void		ss_bonus(t_list **a, t_list **b);
+void		sb_bonus(t_list **b);
+void		sa_bonus(t_list **a);
+void		bonus_instructions(t_list **a, t_list *b, char *line);
+void		line_error(t_list **a, t_list *b, char *line);
 
 #endif

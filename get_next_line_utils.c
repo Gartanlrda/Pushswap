@@ -6,11 +6,11 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:36:44 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 14:05:39 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 16:56:06 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "get_next_line.h"
 
 char	*ft_strjoin(char *s1, char *s2, int len)
 {
@@ -21,7 +21,7 @@ char	*ft_strjoin(char *s1, char *s2, int len)
 
 	i = 0;
 	j = 0;
-	mallocizer = ft_strlen(s1) + len;
+	mallocizer = ft_strlen_gnl(s1) + len;
 	result = malloc(sizeof(char) * (mallocizer + 1));
 	if (!result)
 		return (NULL);
@@ -59,4 +59,16 @@ char	*ft_strdup(char *s)
 	}
 	result[i] = '\0';
 	return (result);
+}
+
+int	ft_strlen_gnl(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
 }

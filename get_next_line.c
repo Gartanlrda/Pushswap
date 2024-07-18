@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:46:02 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 13:49:39 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 17:53:50 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include "get_next_line.h"
 
 char	*ft_kastonkrane(char *status, char temp[BUFFER_SIZE + 1])
 {
@@ -55,29 +58,29 @@ int	ft_check(char *s)
 char	*get_next_line(int fd)
 {
 	char		*tmp;
-	static char	stat[100][BUFFER_SIZE + 1];
+	static char	stat[BUFFER_SIZE + 1];
 	int			last;
 
 	tmp = NULL;
 	if (fd < 0 || fd > 129)
 		return (NULL);
-	if (stat[fd][0])
-		tmp = ft_strdup(stat[fd]);
+	if (stat[0])
+		tmp = ft_strdup(stat);
 	last = 1;
-	while (ft_check(stat[fd]) == 0 && last)
+	while (ft_check(stat) == 0 && last)
 	{
-		last = read(fd, stat[fd], BUFFER_SIZE);
+		last = read(fd, stat, BUFFER_SIZE);
 		if (last < 0)
 			return (free(tmp), NULL);
-		stat[fd][last] = '\0';
-		tmp = ft_strjoin(tmp, stat[fd], (ft_strlen(stat[fd])
-					+ ft_strlen(tmp) + 1));
+		stat[last] = '\0';
+		tmp = ft_strjoin(tmp, stat, (ft_strlen_gnl(stat) \
+		+ ft_strlen_gnl(tmp) + 1));
 	}
 	if (last == 0 && tmp[0])
 		return (tmp);
 	if (last == 0)
 		return (free(tmp), NULL);
-	return (ft_kastonkrane(tmp, stat[fd]));
+	return (ft_kastonkrane(tmp, stat));
 }
 
 /*
@@ -98,8 +101,8 @@ int	main(void)
 	}
 }
 */
-
-/*int	main(int ac, char **av)
+/*
+int	main(int ac, char **av)
 {
 	int	fd;
 	int	i;
@@ -117,4 +120,5 @@ int	main(void)
 		if (i == 30)
 			break ;
 	}
-}*/
+}
+*/
