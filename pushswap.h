@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/16 12:04:56 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 14:02:28 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdarg.h>
+#include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 3
+# endif
 
 typedef struct s_psnode
 {
@@ -88,5 +93,14 @@ void		rotator_a(t_list **a, t_list **b, int rev_a);
 void		rotator_b(t_list **a, t_list **b, int rev_b);
 void		do_pushswap(t_list **a);
 int			valid_lst(t_list *lst);
+void		ra_bonus(t_list **a);
+void		rb_bonus(t_list **b);
+void		rr_bonus(t_list **a, t_list **b);
+void		pa_bonus(t_list **a, t_list **b);
+void		pb_bonus(t_list **a, t_list **b);
+void		rra_bonus(t_list **a);
+void		rrb_bonus(t_list **b);
+void		rrr_bonus(t_list **a, t_list **b);
+
 
 #endif

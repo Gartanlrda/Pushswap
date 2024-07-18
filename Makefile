@@ -6,7 +6,7 @@
 #    By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 12:05:39 by ggoy              #+#    #+#              #
-#    Updated: 2024/07/16 12:52:21 by ggoy             ###   ########.fr        #
+#    Updated: 2024/07/18 11:38:54 by ggoy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ OBJ_FILES	= $(SRC_FILES:.c=.o)
 #######################          RULES          ################################
 ################################################################################
 
+
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
@@ -50,6 +51,9 @@ $(NAME): $(OBJ_FILES)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+checker:
+	wget https://cdn.intra.42.fr/document/document/25656/checker_linux
+	chmod 777 checker_linux
 clean:
 	rm -f $(OBJ_FILES)
 
