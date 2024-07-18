@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:36:44 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 13:46:55 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 14:05:39 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,4 @@ char	*ft_strdup(char *s)
 	}
 	result[i] = '\0';
 	return (result);
-}
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
 }

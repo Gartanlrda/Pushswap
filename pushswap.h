@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 14:02:28 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 14:08:01 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ void		pb_bonus(t_list **a, t_list **b);
 void		rra_bonus(t_list **a);
 void		rrb_bonus(t_list **b);
 void		rrr_bonus(t_list **a, t_list **b);
-
+char		*ft_strjoin(char *s1, char *s2, int len);
+char		*ft_strdup(char *s);
+char		*ft_kastonkrane(char *status, char temp[BUFFER_SIZE + 1]);
+int			ft_check(char *s);
+char		*get_next_line(int fd)
 
 #endif
