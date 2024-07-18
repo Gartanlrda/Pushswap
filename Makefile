@@ -6,7 +6,7 @@
 #    By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 12:05:39 by ggoy              #+#    #+#              #
-#    Updated: 2024/07/18 17:05:25 by ggoy             ###   ########.fr        #
+#    Updated: 2024/07/18 18:22:20 by ggoy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,13 +65,13 @@ all: $(NAME)
 $(NAME): $(OBJ_FILES)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_FILES)
 
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 bonus: $(BONUS)
 
 $(BONUS): $(OBJ_FILES_BONUS)
 	$(CC) $(CFLAGS) -o $(BONUS) $(OBJ_FILES_BONUS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
 
 checker_linux:
 	wget https://cdn.intra.42.fr/document/document/25656/checker_linux

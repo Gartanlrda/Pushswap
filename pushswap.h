@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 18:02:06 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/18 18:16:33 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdarg.h>
-#include <fcntl.h>
+# include <fcntl.h>
 # include "get_next_line.h"
 
 typedef struct s_psnode
@@ -38,7 +38,8 @@ typedef struct s_list
 int			ft_printf(const char *s, ...);
 int			ft_putstr(char *s, int count);
 int			ft_putnbr(long long nb, int count);
-int			ft_put_base(unsigned long nb, int count, char *base, unsigned int lenb);
+int			ft_put_base(unsigned long nb, \
+			int count, char *base, unsigned int lenb);
 int			ft_put_address(unsigned long ptr, int count);
 void		ft_putchar(char c);
 void		index_maker(t_list *a);
