@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:52:09 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 18:17:40 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/23 09:50:06 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ void	pb_bonus(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
-	temp = *a;
-	*a = (*a)->next;
-	temp->next = *b;
-	*b = temp;
+	if (*a)
+	{
+		temp = *a;
+		*a = (*a)->next;
+		temp->next = *b;
+		*b = temp;
+	}
 }

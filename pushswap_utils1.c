@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap_utils1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoy <ggoy@student.42nice.fr>              +#+  +:+       +#+        */
+/*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 02:49:37 by ggoy              #+#    #+#             */
-/*   Updated: 2024/06/19 07:27:18 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/22 13:45:32 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int		i;
+	long	result;
+	int		sign;
 
 	i = 0;
 	result = 0;

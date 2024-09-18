@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 23:04:51 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 17:54:17 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/22 14:01:16 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,13 @@ int	ft_strlen(const char *str)
 
 int	check_sort(t_list *a)
 {
-	while (a->next)
+	t_list	*tmp;
+
+	tmp = a;
+	while (tmp->next)
 	{
-		if (a->next->content.index > a->content.index)
-			a = a->next;
+		if (tmp->next->content.index > tmp->content.index)
+			tmp = tmp->next;
 		else
 			return (0);
 	}

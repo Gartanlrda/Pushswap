@@ -6,11 +6,24 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:49:48 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 14:29:49 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/08/31 13:44:45 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+static void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 int	valid_lst(t_list *lst)
 {
@@ -38,25 +51,24 @@ void	do_pushswap(t_list **a)
 {
 	t_list	*tmp;
 
-	if (valid_lst(*a) == 1)
+	if (*a)
 	{
-		index_maker(*a);
-		sortin_list(a);
-		if ((*a)->content.index <= (ft_lstsize(*a) / 2))
+		if (valid_lst(*a) == 1)
 		{
-			while (check_sort(*a) != 1)
-				rra(a);
+			index_maker(*a);
+			if (check_sort(*a) != 1)
+			{
+				sortin_list(a);
+				final_sort(a);
+				tmp = *a;
+			}
 		}
 		else
-		{
-			while (check_sort(*a) != 1)
-				ra(a);
-		}
-		tmp = *a;
+			write(2, "Error\n", 6);
+		free_lst(*a);
 	}
 	else
 		write(2, "Error\n", 6);
-	free_lst(*a);
 }
 
 /*		while (tmp)
@@ -65,7 +77,6 @@ void	do_pushswap(t_list **a)
 			tmp->content.position, tmp->content.index, tmp->content.element);
 			tmp = tmp->next;
 		}*/
-
 static void	makelist(t_list **a, char **pre_sort)
 {
 	t_list		*new;
@@ -75,6 +86,13 @@ static void	makelist(t_list **a, char **pre_sort)
 	i = 0;
 	while (pre_sort[i])
 	{
+		if (ft_atoi(pre_sort[i]) > INT_MAX || ft_atoi(pre_sort[i]) < INT_MIN)
+		{
+			write(2, "Error\n", 6);
+			free_tab(pre_sort);
+			free_lst(*a);
+			exit(EXIT_FAILURE);
+		}
 		new = ft_lstnew(makenode(ft_atoi(pre_sort[i]), index, index));
 		ft_lstadd_back(a, new);
 		i++;
@@ -83,30 +101,17 @@ static void	makelist(t_list **a, char **pre_sort)
 	}
 }
 
-static void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
-
 int	main(int argc, char **argv)
 {
 	t_list	*a;
 	char	**pre_sort;
 	int		i;
 
-	i = 1;
+	i = 0;
 	a = NULL;
 	if (argc > 1)
 	{
-		while (argv[i])
+		while (argv[++i])
 		{
 			if (is_valid(argv[i]) == 1)
 			{
@@ -118,8 +123,8 @@ int	main(int argc, char **argv)
 			{
 				free_lst(a);
 				write(2, "Error\n", 6);
+				return (0);
 			}
-			i++;
 		}
 		do_pushswap(&a);
 	}

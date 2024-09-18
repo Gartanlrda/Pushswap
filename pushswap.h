@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:39:13 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 18:16:33 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/23 09:38:58 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <string.h>
 # include <stdarg.h>
 # include <fcntl.h>
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 # include "get_next_line.h"
 
 typedef struct s_psnode
@@ -63,7 +65,7 @@ int			is_valid(char *s);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(t_psnode content);
 t_psnode	makenode(int element, int index, int position);
-int			ft_atoi(const char *nptr);
+long		ft_atoi(const char *nptr);
 int			check_sort(t_list *a);
 int			ft_lstsize(t_list *lst);
 void		sortin_five(t_list **a);
@@ -105,11 +107,12 @@ char		*ft_kastonkrane(char *status, char temp[BUFFER_SIZE + 1]);
 int			ft_check(char *s);
 void		do_pushswap_bonus(t_list **a);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
-void		do_manual_sort(t_list **a);
+void		do_manual_sort(t_list **a, t_list **b);
 void		ss_bonus(t_list **a, t_list **b);
 void		sb_bonus(t_list **b);
 void		sa_bonus(t_list **a);
-void		bonus_instructions(t_list **a, t_list *b, char *line);
-void		line_error(t_list **a, t_list *b, char *line);
+void		bonus_instructions(t_list **a, t_list **b, char *line);
+void		line_error(t_list **a, t_list **b, char *line);
+void		final_sort(t_list **a);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 12:05:39 by ggoy              #+#    #+#              #
-#    Updated: 2024/07/18 18:22:20 by ggoy             ###   ########.fr        #
+#    Updated: 2024/08/31 13:40:01 by ggoy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		= push_swap
 BONUS		= checker
-CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address -g
 CC			= cc
 ################################################################################
 #######################         SOURCES         ################################

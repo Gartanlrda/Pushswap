@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:55:45 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/18 18:05:35 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/23 09:48:16 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rra_bonus(t_list **a)
 	t_list		*temp;
 	t_list		*temp2;
 
-	if (*a)
+	if (*a && ft_lstsize(*a) > 1)
 	{
 		temp2 = (*a);
 		temp = ft_lstlast(*a);
@@ -33,7 +33,7 @@ void	rrb_bonus(t_list **b)
 	t_list		*temp;
 	t_list		*temp2;
 
-	if (*b)
+	if (*b && ft_lstsize(*b) > 1)
 	{
 		temp2 = (*b);
 		temp = ft_lstlast(*b);
@@ -51,7 +51,7 @@ void	rrr_bonus(t_list **a, t_list **b)
 	t_list		*tempb;
 	t_list		*tempb2;
 
-	if (*a)
+	if (*a && ft_lstsize(*a) > 1)
 	{
 		temp2 = (*a);
 		temp = ft_lstlast(*a);
@@ -60,7 +60,7 @@ void	rrr_bonus(t_list **a, t_list **b)
 		temp2->next = NULL;
 		ft_lstadd_front(a, temp);
 	}
-	if (*b)
+	if (*b && ft_lstsize(*b) > 1)
 	{
 		tempb2 = (*b);
 		tempb = ft_lstlast(*b);

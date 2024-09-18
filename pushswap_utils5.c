@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:14:47 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:52:39 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/22 17:29:55 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	op_in_a(t_list **a, int index_b)
 
 int	best_b(t_list **a, t_list **b)
 {
+	int		test_size;
 	int		current;
 	int		cheapest;
 	int		best;
@@ -45,13 +46,14 @@ int	best_b(t_list **a, t_list **b)
 
 	tmp = *b;
 	cheapest = 2147483647;
+	test_size = ft_lstsize(*b);
 	while (tmp)
 	{
-		if (tmp->content.position <= ft_lstsize(*b) / 2)
+		if (tmp->content.position <= test_size / 2)
 			current = op_in_a(a, tmp->content.index) + tmp->content.position;
 		else
 			current = op_in_a(a, tmp->content.index) \
-				+ (ft_lstsize(*b) - tmp->content.position + 1);
+				+ (test_size - tmp->content.position + 1);
 		if (current < cheapest)
 		{
 			cheapest = current;
@@ -64,6 +66,7 @@ int	best_b(t_list **a, t_list **b)
 
 int	best_a(t_list **a, t_list **b)
 {
+	int		test;
 	int		lower_big;
 	int		i;
 	int		index;
@@ -72,7 +75,8 @@ int	best_a(t_list **a, t_list **b)
 	i = 0;
 	lower_big = index_max(a);
 	tmp = *b;
-	while (tmp->content.position != best_b(a, b))
+	test = best_b(a, b);
+	while (tmp->content.position != test)
 		tmp = tmp->next;
 	index = tmp->content.index;
 	tmp = *a;
@@ -90,19 +94,21 @@ int	best_a(t_list **a, t_list **b)
 
 int	op_in_total(t_list **a, t_list **b)
 {
+	int		test_size;
 	int		current;
 	int		cheapest;
 	t_list	*tmp;
 
 	tmp = *b;
 	cheapest = 2147483647;
+	test_size = ft_lstsize(*b);
 	while (tmp)
 	{
-		if (tmp->content.position <= ft_lstsize(*b) / 2)
+		if (tmp->content.position <= test_size / 2)
 			current = op_in_a(a, tmp->content.index) + tmp->content.position;
 		else
 			current = op_in_a(a, tmp->content.index) \
-				+ (ft_lstsize(*b) - tmp->content.position + 1);
+				+ (test_size - tmp->content.position + 1);
 		if (current < cheapest)
 			cheapest = current;
 		tmp = tmp->next;
@@ -112,13 +118,15 @@ int	op_in_total(t_list **a, t_list **b)
 
 int	op_in_b(t_list **a, t_list **b)
 {
+	int		test;
 	int		current;
 	int		cheapest;
 	t_list	*tmp;
 
 	tmp = *b;
 	cheapest = 2147483647;
-	while (tmp->content.position != best_b(a, b))
+	test = best_b(a, b);
+	while (tmp->content.position != test)
 		tmp = tmp->next;
 	current = best_b(a, b);
 	if (current <= ft_lstsize(*b) / 2)

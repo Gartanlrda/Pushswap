@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:05:36 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 15:48:12 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/22 17:36:34 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	mix_push(t_list **a, t_list **b)
 	t_list	*tmp;
 	int		rev_a;
 	int		rev_b;
+	int		test;
 
 	rev_b = op_in_b(a, b);
 	tmp = *b;
-	while (tmp->content.position != best_b(a, b))
+	test = best_b(a, b);
+	while (tmp->content.position != test)
 		tmp = tmp->next;
 	rev_a = op_in_a(a, tmp->content.index);
 	rotator_a(a, b, rev_a);

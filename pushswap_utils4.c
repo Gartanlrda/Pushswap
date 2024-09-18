@@ -6,7 +6,7 @@
 /*   By: ggoy <ggoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:26:17 by ggoy              #+#    #+#             */
-/*   Updated: 2024/07/15 14:10:24 by ggoy             ###   ########.fr       */
+/*   Updated: 2024/07/22 14:09:36 by ggoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,17 @@ void	update_position(t_list *a)
 	}
 }
 
-void	update_rev_position(t_list *a)
+void	final_sort(t_list **a)
 {
-	t_list	*temp;
-	int		i;
-
-	i = ft_lstsize(a) - 1;
-	temp = a;
-	while (temp)
+	if ((*a)->content.index <= (ft_lstsize(*a) / 2))
 	{
-		temp->content.position = i;
-		temp = temp->next;
-		i--;
+		while (check_sort(*a) != 1)
+			rra(a);
+	}
+	else
+	{
+		while (check_sort(*a) != 1)
+			ra(a);
 	}
 }
 
